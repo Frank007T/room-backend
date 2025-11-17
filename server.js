@@ -13,7 +13,7 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/room-admin')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://franklinoffcl07_db_user:OQ3XLXocb0IcSDWt@cluster0.hnhb9kw.mongodb.net/')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log('MongoDB connection error:', err));
 
