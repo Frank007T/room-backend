@@ -7,8 +7,18 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Allowed origins for CORS
+const allowedOrigins = [
+  'http://localhost:3000', // local React dev
+  'https://room-zeta-cyan.vercel.app', // your production frontend
+  // Add additional frontend URLs here if needed
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
+
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
