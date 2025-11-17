@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const { testConnection: testPostgres } = require('./db/postgres');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
@@ -17,9 +16,6 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/room-admin')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log('MongoDB connection error:', err));
-
-// Attempt Postgres connection (non-blocking)
-testPostgres();
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
